@@ -1,0 +1,19 @@
+---
+- name: Install Velociraptor
+  hosts: all
+  remote_user: admin
+  become: true
+  tasks:
+  - name: Download Velociraptor from GitHub releases 
+    ansible.builtin.get_url:
+      url: https://github.com/Velocidex/velociraptor/releases/download/v0.6.5-0/velociraptor-v0.6.5-2-linux-amd64
+      dest: /home/admin/velociraptor
+      mode: '0700'
+  - name: Prep Velociraptor 
+    ansible.builtin.shell: /home/admin/velociraptor config generate > /home/admin/server.config.yaml
+  - name: Set Velociraptor login
+    ansible.builtin.shell: /home/admin/velociraptor --config /home/admin/server.config.yaml user add login dogsandcats --role administrator
+  - name: Create Velociraptor unit file
+    template: src=sample.systemd dest=/etc/systemd/system/velociraptor.service mode=644
+  - name: Start Velociraptor
+    service: name=velociraptor.service state=started enabled=yes

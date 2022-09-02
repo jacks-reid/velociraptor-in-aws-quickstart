@@ -1,0 +1,8 @@
+[Unit]
+Description=Start Velociraptor
+
+[Service]
+ExecStart=/home/admin/velociraptor --config /home/admin/server.config.yaml frontend -v
+
+[Install]
+WantedBy=multi-user.target

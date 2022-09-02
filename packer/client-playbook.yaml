@@ -1,0 +1,11 @@
+---
+- name: Install Velociraptor
+  hosts: all
+  remote_user: admin
+  tasks:
+  - name: Download Velociraptor from GitHub releases 
+    become: true
+    ansible.builtin.get_url:
+      url: https://github.com/Velocidex/velociraptor/releases/download/v0.6.5-0/velociraptor-v0.6.5-2-linux-amd64
+      dest: /home/admin/velociraptor
+      mode: '0700'
