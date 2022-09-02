@@ -82,3 +82,30 @@ terraform destroy -var aws_az=$YOUR_PREFERRED_AWS_AZ -var server_ami=$SERVER_AMI
 ```
 
 To delete the AWS AMIs, first deregister the AMIs within the AWS console and then delete the snapshots that were backing those AMIs.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_key_pair"></a> [key\_pair](#module\_key\_pair) | terraform-aws-modules/key-pair/aws | n/a |
+| <a name="module_velociraptor_client"></a> [velociraptor\_client](#module\_velociraptor\_client) | terraform-aws-modules/ec2-instance/aws | ~> 3.0 |
+| <a name="module_velociraptor_client_sg"></a> [velociraptor\_client\_sg](#module\_velociraptor\_client\_sg) | terraform-aws-modules/security-group/aws | n/a |
+| <a name="module_velociraptor_server"></a> [velociraptor\_server](#module\_velociraptor\_server) | terraform-aws-modules/ec2-instance/aws | ~> 3.0 |
+| <a name="module_velociraptor_server_sg"></a> [velociraptor\_server\_sg](#module\_velociraptor\_server\_sg) | terraform-aws-modules/security-group/aws | n/a |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_aws_az"></a> [aws\_az](#input\_aws\_az) | variables.tf | `any` | n/a | yes |
+| <a name="input_client_ami"></a> [client\_ami](#input\_client\_ami) | n/a | `any` | n/a | yes |
+| <a name="input_server_ami"></a> [server\_ami](#input\_server\_ami) | n/a | `any` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_client_public_ip"></a> [client\_public\_ip](#output\_client\_public\_ip) | n/a |
+| <a name="output_private_key_pem"></a> [private\_key\_pem](#output\_private\_key\_pem) | outputs.tf |
+| <a name="output_server_public_ip"></a> [server\_public\_ip](#output\_server\_public\_ip) | n/a |
